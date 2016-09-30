@@ -1,0 +1,19 @@
+<html>
+
+<body>
+
+<h1>holi {{title}}</h1>
+
+{% for obj in object_list %}
+
+<a href="{{ obj.get_absolut_url }}">{{ obj.title }}</a><br>
+{{ obj.content }}<br>
+{{ obj.timesta }}<br>
+{{ obj.update }}<br>
+{{ obj.id }}<br>
+{{ obj.pk }}<br>
+
+{% endfor %}
+
+</body>
+</html>
