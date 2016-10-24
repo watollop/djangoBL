@@ -1,7 +1,5 @@
-<html>
-
-<body>
-
+{% extends "base.html"%}
+{% block content %}
 <h1>holi {{title}}</h1>
 
 {% for obj in object_list %}
@@ -15,5 +13,4 @@
 
 {% endfor %}
 
-</body>
-</html>
+{% endblock content %}
