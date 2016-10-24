@@ -1,10 +1,14 @@
+{%load staticfiles %}
+
 <html>
 <head>
 <title>{%block head_title %} Mi titulo{% endblock head_title%} </title>
-</head>
+<link rel="stylesheet" href='{% static "/static/css/base.css" %}'/>
 <style>
 {%block style %} {% endblock style%}
 </style>
+</head>
+
 <body>
 {%include "massages_display.html"%}
 <div class="container">
