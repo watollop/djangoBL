@@ -1,17 +1,16 @@
 {% extends "base.html"%}
 
+{% block head_title%}
+{{ obj.title}} | {{block.super}}
+{% endblock %}
 {% block content %}
 
-<h1>{{title}}</h1>
+<div class="col-sm-6 col-sm-offset-3">
+<h1>{{obj.title}}</h1><small>{{ obj.timestamp }}</small>
 
+{{ obj.content | linebreaks }}<br>
+<br>
 
-
-{{ obj.title }}<br>
-{{ obj.content }}<br>
-{{ obj.timesta }}<br>
-{{ obj.update }}<br>
-{{ obj.id }}<br>
-{{ obj.pk }}<br>
-
+</div>
 
 {% endblock content %}
