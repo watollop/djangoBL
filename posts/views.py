@@ -24,8 +24,8 @@ def posts_create(request):
     }
     return render(request, "post_form.html",context)
 
-def posts_detail(request, id=None):
-    instance = get_object_or_404(Post, id=id)
+def posts_detail(request, slug=None):
+    instance = get_object_or_404(Post, slug=slug)
     context= {
         "title": instance.title,
         "obj": instance
