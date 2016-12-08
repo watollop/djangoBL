@@ -1,3 +1,5 @@
+from urllib import quote_plus
+
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib import messages
@@ -26,9 +28,11 @@ def posts_create(request):
 
 def posts_detail(request, slug=None):
     instance = get_object_or_404(Post, slug=slug)
+    share_string = quote_plus(instance.content)
     context= {
         "title": instance.title,
-        "obj": instance
+        "obj": instance,
+        "share_string": share_string
     }
     return render(request, "post_detail.html",context)
 
@@ -55,8 +59,8 @@ def posts_list(request):
 
 
 
-def posts_update(request, id=None):
-    instance = get_object_or_404(Post, id=id)
+def posts_update(request, slug=None):
+    instance = get_object_or_404(Post, slug=slug)
     form = PostForm(request.POST or None, request.FILES or None, instance=instance)
     if form.is_valid():
         instance = form.save(commit=False)
