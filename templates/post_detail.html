@@ -9,7 +9,7 @@
   {% if obj.image %}
     <img src="{{obj.image.url}}" class="img-responsive" />
   {%endif%}
-<h1>{{obj.title}}</h1><small>{{ obj.timestamp }}</small>
+<h1>{{obj.title}}</h1><small>{{ obj.timestamp | timesince}}</small>
 
 {{ obj.content | linebreaks }}<br>
 <br>
@@ -19,7 +19,7 @@
 Facebook
 </a>
 
-<a href="https://twitter.com/home?status=I'm%20going%20to%20learn%20to%20Code...%20Come%20build%20an%20web%20apsp%20with%20me!%20%23CFE%20and%20@justinmitchel%20{{ request.build_absolute_uri }}">
+<a href="https://twitter.com/home?status={{share_string}}%20{{ request.build_absolute_uri }}">
 Twitter
 </a>
 {% endblock content %}

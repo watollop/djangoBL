@@ -58,7 +58,6 @@ def posts_list(request):
 
 
 
-
 def posts_update(request, slug=None):
     instance = get_object_or_404(Post, slug=slug)
     form = PostForm(request.POST or None, request.FILES or None, instance=instance)
