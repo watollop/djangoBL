@@ -7,8 +7,7 @@ from .models import Post
 from .forms import PostForm
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render
-
-
+from django.utils import timezone
 # Create your views here.
 
 
@@ -32,6 +31,9 @@ def posts_create(request):
 
 def posts_detail(request, slug=None):
     instance = get_object_or_404(Post, slug=slug)
+    if instance.draft:
+        if not request.user.is_staff or not request.user.is_superuser:
+            raise Http404
     share_string = quote_plus(instance.content)
     context= {
         "title": instance.title,
@@ -41,7 +43,9 @@ def posts_detail(request, slug=None):
     return render(request, "post_detail.html",context)
 
 def posts_list(request):
-    queryset_list = Post.objects.all()
+    queryset_list = Post.objects.active()
+    if request.user.is_staff or request.user.is_superuser:
+        queryset_list = Post.objects.all()
     paginator = Paginator(queryset_list, 5) # Show 25 contacts per page
 
     page = request.GET.get('page')
