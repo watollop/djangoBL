@@ -10,7 +10,7 @@ afs
   {% if obj.image %}
     <img src="{{obj.image.url}}" class="img-responsive" />
   {%endif%}
-<h1>{{obj.title}}</h1><small>{{ obj.timestamp | timesince}}</small>
+<h1>{{obj.title}}</h1>{{ obj.publish}}{% if obj.draft %}ojete{%endif%}
 <p>Author: {{obj.user}}</p>
 
 {{ obj.content | linebreaks }}<br>
