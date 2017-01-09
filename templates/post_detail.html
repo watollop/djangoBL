@@ -11,6 +11,7 @@ afs
     <img src="{{obj.image.url}}" class="img-responsive" />
   {%endif%}
 <h1>{{obj.title}}</h1><small>{{ obj.timestamp | timesince}}</small>
+<p>Author: {{obj.user}}</p>
 
 {{ obj.content | linebreaks }}<br>
 <br>
