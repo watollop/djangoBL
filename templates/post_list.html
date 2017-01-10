@@ -1,6 +1,10 @@
 {% extends "base.html"%}
 {% block content %}
 <h1>holi {{title}}</h1>
+<form method="GET" action="">
+  <input type="text" name="q" value="{{request.GET.q}}">
+<input type="submit" value="Search">
+</form>
 <div class="row">
 
 {% for obj in object_list %}
