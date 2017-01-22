@@ -6,14 +6,17 @@
 {% block content %}
 afs
 {{obj.content|urlify }}
-<div class="col-sm-6 col-sm-offset-3">
+<div class="col-sm-6 col-sm-offset-3 ">
   {% if obj.image %}
     <img src="{{obj.image.url}}" class="img-responsive" />
   {%endif%}
 <h1>{{obj.title}}</h1>{{ obj.publish}}{% if obj.draft %}ojete{%endif%}
 <p>Author: {{obj.user}}</p>
+<div class="content-markdown">
+{{ obj.content }}
 
-{{ obj.content | linebreaks }}<br>
+</div>
+<br>
 <br>
 
 </div>

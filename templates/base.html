@@ -12,8 +12,10 @@
 <!-- Latest compiled and minified JavaScript -->
 <link rel="stylesheet" href='{% static "/static/css/base.css" %}'/>
 <style>
-{%block style %} {% endblock style%}
+{%block style %} {% endblock style %}
+
 </style>
+{% block head_extra %} {% endblock head_extra %}
 </head>
 
 <body>
@@ -33,8 +35,17 @@ fjs.parentNode.insertBefore(js, fjs);
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" crossorigin="anonymous"></script>
 
-
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.6/marked.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script>
+$(document).ready(function(){
+  $(".content-markdown").each(function(){
+    var markdown = marked($(this).text())
+    $(this).html(markdown)
+  })
 
+})
+</script>
 </body>
 </html>
